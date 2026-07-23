@@ -2914,7 +2914,7 @@ async function findExcelMarkerMatches(workbook, marker){
 window.openAutoSignExcelModal = async (recordId, fileId, fileName) => {
   if(!SIGN_IMAGE){ toast('설정에서 서명 이미지를 먼저 등록하세요'); $('settingsBtn').click(); return; }
   if(!window.ExcelJS){ toast('엑셀 처리 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인하세요.'); return; }
-  ASX = { recordId, fileId, fileName, matches:[], selected:0, width:90, signDateValue: todayDateInputValue(), printArea:'', sheetPrintAreas:{} };
+  ASX = { recordId, fileId, fileName, matches:[], selected:0, width:60, signDateValue: todayDateInputValue(), printArea:'', sheetPrintAreas:{} };
   $('asxSub').textContent = `"${fileName}" 파일을 불러오는 중입니다...`;
   $('asxBody').innerHTML = `<div class="empty" style="padding:30px;"><h3>불러오는 중...</h3></div>`;
   $('asxApplyBtn').disabled = true;
