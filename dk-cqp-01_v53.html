@@ -2710,7 +2710,7 @@ async function renderAutosignStage(){
     <div class="autosign-toolbar">
       ${AS.numPages>1 ? `<label>페이지 <select id="asPageSel" style="margin-left:4px;"></select> / ${AS.numPages}</label>` : ''}
       <span class="autosign-badge ${totalMatches?'found':'notfound'}">${totalMatches ? `표시 문구 '${escapeHtml(SIGN_MARKER)}' ${totalMatches}곳 발견` : `표시 문구를 찾지 못함 · 직접 위치를 지정하세요`}</span>
-      <span class="slider-wrap">크기 <input type="range" id="asSizeRange" min="40" max="400" value="120"><span id="asSizeVal">120px</span></span>
+      <span class="slider-wrap">크기 <input type="range" id="asSizeRange" min="40" max="400" value="60"><span id="asSizeVal">60px</span></span>
       <span class="slider-wrap">서명일자 <input type="date" id="asDateInput" value="${AS.signDateValue}" ${LOCK_SIGN_DATE ? 'disabled title="설정에서 서명 일자 변경이 잠겨 있습니다"' : ''}></span>
     </div>
     <div class="autosign-stage" id="asStage">
@@ -2732,7 +2732,7 @@ async function renderAutosignStage(){
   await page.render({ canvasContext: ctx, viewport }).promise;
 
   AS.aspect = AS.imgNatural.h / AS.imgNatural.w;
-  const initW = 120;
+  const initW = 60;
   const match = matchesOnPage[0];
   let left, top;
   if(match){
@@ -2914,7 +2914,7 @@ async function findExcelMarkerMatches(workbook, marker){
 window.openAutoSignExcelModal = async (recordId, fileId, fileName) => {
   if(!SIGN_IMAGE){ toast('설정에서 서명 이미지를 먼저 등록하세요'); $('settingsBtn').click(); return; }
   if(!window.ExcelJS){ toast('엑셀 처리 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인하세요.'); return; }
-  ASX = { recordId, fileId, fileName, matches:[], selected:0, width:60, signDateValue: todayDateInputValue(), printArea:'', sheetPrintAreas:{} };
+  ASX = { recordId, fileId, fileName, matches:[], selected:0, width:90, signDateValue: todayDateInputValue(), printArea:'', sheetPrintAreas:{} };
   $('asxSub').textContent = `"${fileName}" 파일을 불러오는 중입니다...`;
   $('asxBody').innerHTML = `<div class="empty" style="padding:30px;"><h3>불러오는 중...</h3></div>`;
   $('asxApplyBtn').disabled = true;
