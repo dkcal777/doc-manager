@@ -2519,8 +2519,8 @@ function formatSignDate(isoDateStr){
 async function buildSignatureWithDate(dateText){
   const img = await loadImageElement(SIGN_IMAGE);
   const iw = img.naturalWidth, ih = img.naturalHeight;
-  const bandH = Math.max(16, Math.round(ih*0.3));
-  const fontPx = Math.max(12, Math.round(bandH*0.45));
+  const bandH = Math.max(16, Math.round(ih*0.40));
+  const fontPx = Math.max(12, Math.round(bandH*0.55));
   const canvas = document.createElement('canvas');
   canvas.width = iw;
   canvas.height = ih + bandH;
